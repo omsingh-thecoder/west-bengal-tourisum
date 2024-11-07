@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discover West Bengal - Tourist Spots</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/script.js"></script>
   </head>
   <body>
     <header>
@@ -15,12 +14,13 @@
           <li><a href="#home" class="nav-item">Home</a></li>
           <li><a href="#spots" class="nav-item">Tourist Spots</a></li>
           <li><a href="#gallery" class="nav-item">Gallery</a></li>
-          <!-- <li></li><a href="#contact" >Contact</a></li> -->
         </ul>
         <div class="contact-btn">
           <a href="#contact">Contact</a>
         </div>
-
+        <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+          🌓
+        </button>
         <div class="burger">
           <div class="line1"></div>
           <div class="line2"></div>
@@ -34,25 +34,23 @@
         <h1>Welcome to <span>West Bengal</span></h1>
         <p>Discover the beauty and culture of India's eastern gem</p>
       </section>
+
       <section id="spots" class="tourist-spots">
         <h2>Popular Tourist Spots</h2>
         <div class="spot-grid">
           <div class="spot-card">
-            <a href="darjeeling2.html">
-              <img src="/img/pexels-vikashkr50-17845104.jpg" alt="Darjeeling" />
+            <a href="darjeeling.html">
+              <img src="/img/dargeling.jpg" alt="Darjeeling Tea Gardens" />
+              <h3>Darjeeling</h3>
             </a>
-            <h3>Darjeeling</h3>
             <p>
               Famous for its tea plantations and the Darjeeling Himalayan
               Railway
             </p>
           </div>
           <div class="spot-card">
-            <a href="sundarbans2.html">
-              <img
-                src="/img/48b652f57977da86af05cc1389fc3c64.jpg"
-                alt="Sundarbans"
-              />
+            <a href="sundarbans.html">
+              <img src="/img/sundarban.jpg" alt="Sundarbans Mangrove Forest" />
               <h3>Sundarbans</h3>
             </a>
             <p>
@@ -61,7 +59,10 @@
           </div>
           <div class="spot-card">
             <a href="kolkata.html">
-              <img src="/img/howrah.jpg" alt="Kolkata" />
+              <img
+                src="/img/Kolkata city Sightseeing Tour.jpg"
+                alt="Howrah Bridge, Kolkata"
+              />
               <h3>Kolkata</h3>
             </a>
             <p>
@@ -69,54 +70,36 @@
             </p>
           </div>
           <div class="spot-card">
-            <a href="digha2.html">
-              <img
-                src="/img/49a568369ba558a0a99cd63b5555b856.jpg"
-                alt="Digha"
-              />
+            <a href="digha.html">
+              <img src="/img/digha.jpg" alt="Digha Beach" />
               <h3>Digha</h3>
             </a>
             <p>A popular sea beach with golden sand and clear blue waters</p>
           </div>
-
-          <div class="btn">
-            <a href="popularspots.html">
-              <button type="button ">VIEW MORE</button></a
-            >
-          </div>
+        </div>
+        <div class="btn">
+          <a href="popularspots.html">
+            <button type="button">VIEW MORE</button>
+          </a>
         </div>
       </section>
 
       <section id="gallery" class="gallery">
         <h2>Gallery</h2>
         <div class="gallery-grid">
-          <img
-            src="/img/62a67fad-229c-47ac-9c7d-fc83e9ab82c4.jpg"
-            alt="West Bengal Scenery 1"
-          />
-          <img
-            src="/img/e10feecc-b82e-4e19-bba8-6cb09341ef32.jpg"
-            alt="West Bengal Scenery 2"
-          />
-          <img
-            src="/img/Kolkata city Sightseeing Tour.jpg"
-            alt="West Bengal Scenery 3"
-          />
-          <img
-            src="/img/008e57c2-a257-43e7-87a2-5ea9fb052baa.jpg"
-            alt="West Bengal Scenery 4"
-          />
-
-          <div class="btn">
-            <a href="gallery.html"><button type="button ">VIEW MORE</button></a>
-          </div>
+          <img src="/img/kalimpong monastry.jpg" alt="West Bengal Culture" />
+          <img src="/img/mirik.jpg" alt="West Bengal Cuisine" />
+          <img src="/img/book fair.jpg" alt="West Bengal Festival" />
+          <img src="/img/howrahbridge.jpg" alt="West Bengal Nature" />
+        </div>
+        <div class="btn">
+          <a href="gallery.html"><button type="button">VIEW MORE</button></a>
         </div>
       </section>
 
       <section id="contact" class="contact">
         <h2>Contact Us</h2>
         <form action="https://api.web3forms.com/submit" method="POST">
-          <!-- Replace with your Access Key -->
           <input
             type="hidden"
             name="access_key"
@@ -133,8 +116,10 @@
         </form>
       </section>
     </main>
+
     <footer>
-      <p>&copy; 2023 Discover West Bengal. All rights reserved.</p>
+      <p>&copy; 2024 Discover West Bengal.</p>
     </footer>
+    <script src="/js/script.js"></script>
   </body>
 </html>

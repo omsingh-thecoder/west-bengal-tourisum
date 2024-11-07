@@ -197,7 +197,7 @@ nav {
         }
 
         .hero {
-            background-image: url('https://source.unsplash.com/1600x900/?darjeeling,tea-plantation');
+            background-image: url('/img/dargeling.jpg');
             background-size: cover;
             background-position: center;
             height: 60vh;

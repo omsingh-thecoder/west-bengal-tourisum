@@ -1,283 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
-.hero {
-    background-image: url('ps.jpg');
-    background-position: center;
-    background-size: cover;
+:root {
+  --primary-color: #e91e63;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --card-background: #ffffff;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.spot-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+.dark-mode {
+  --primary-color: #ff4081;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --card-background: #1e1e1e;
+  --card-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
-
-.spot-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.spot-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.spot-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.spot-card-content {
-    padding: 1.5rem;
-}
-
-.spot-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.spot-card p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.5rem;
-}
-
-.spot-card .location {
-    font-size: 0.8rem;
-    color: #888;
-    font-style: italic;
-}
-
-@media (max-width: 768px) {
-    .spot-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-}
-  
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;  /* Smooth scrolling */
 }
 
 body {
-font-family: 'Poppins', sans-serif;
-line-height: 1.6;
-color: #333;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 .container {
-width: 90%;
-max-width: 1200px;
-margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 header {
-background-color: #fff;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-position: fixed;
-width: 100%;
-z-index: 1000;
+  background-color: var(--card-background);
+  box-shadow: var(--card-shadow);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .logo {
-font-size: 1.5rem;
-font-weight: 600;
-color: #e91e63;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
 }
 
 .nav-links {
-display: flex;
-list-style: none;
+  display: flex;
+  list-style: none;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nav-links li {
-margin-left: 2rem;
+  margin-left: 2rem;
 }
 
 .nav-links a {
-text-decoration: none;
-color: #333;
-font-weight: 400;
-transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 400;
+  transition: color 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
-color: #e91e63;
+  color: var(--primary-color);
+}
+
+.dark-mode-toggle {
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dark-mode-toggle:hover {
+  transform: rotate(20deg); /* Subtle rotation on hover */
 }
 
 .burger {
-display: none;
-cursor: pointer;
+  display: none;
+  cursor: pointer;
+  transition: transform 0.4s ease;
 }
 
 .burger div {
-width: 25px;
-height: 3px;
-background-color: #333;
-margin: 5px;
-transition: all 0.3s ease;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
+  margin: 5px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .hero {
-height: 60vh;
-background-size: cover;
-background-position: center;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-color: #fff;
-position: relative;
+  height: 60vh;
+  background-image: url("ps.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  transition: background 0.3s ease-in-out;
 }
 
 .hero::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(0, 0, 0, 0.5);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-in-out;
 }
 
 .hero-content {
-position: relative;
-z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-font-size: 3rem;
-margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .hero p {
-font-size: 1.2rem;
-margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 main {
-padding: 4rem 0;
+  padding: 4rem 0;
 }
 
-section {
-margin-bottom: 4rem;
+.spot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  transition: all 0.3s ease-in-out;
 }
 
-h2 {
-font-size: 2.5rem;
-margin-bottom: 2rem;
-color: #e91e63;
+.spot-card {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2rem;
+.spot-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-.card {
-background-color: #fff;
-border-radius: 10px;
-overflow: hidden;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-transition: transform 0.3s ease;
+.spot-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: filter 0.3s ease-in-out;
 }
 
-.card:hover {
-transform: translateY(-5px);
+.spot-card img:hover {
+  filter: brightness(0.8);
 }
 
-.card img {
-width: 100%;
-height: 200px;
-object-fit: cover;
+.spot-card-content {
+  padding: 1.5rem;
 }
 
-.card-content {
-padding: 1.5rem;
+.spot-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  transition: color 0.3s ease-in-out;
 }
 
-.card h3 {
-font-size: 1.5rem;
-margin-bottom: 1rem;
+.spot-card h3:hover {
+  color: #ff6f91;
 }
 
 footer {
-background-color: #333;
-color: #fff;
-padding: 2rem 0;
-text-align: center;
+  background-color: var(--card-background);
+  color: var(--text-color);
+  padding: 2rem 0;
+  text-align: center;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
-.nav-links {
-position: absolute;
-right: 0;
-height: 92vh;
-top: 8vh;
-background-color: #fff;
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 50%;
-transform: translateX(100%);
-transition: transform 0.5s ease-in;
+  .nav-links {
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 8vh;
+    background-color: var(--card-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .burger.toggle div:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .burger.toggle div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger.toggle div:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
 }
 
-.nav-links li {
-opacity: 0;
-}
-
-.burger {
-display: block;
-}
-
-.nav-active {
-transform: translateX(0%);
-}
-
-.hero h1 {
-font-size: 2.5rem;
-}
-
-.hero p {
-font-size: 1rem;
-}
-}
-
-@keyframes navLinkFade {
-from {
-opacity: 0;
-transform: translateX(50px);
-}
-to {
-opacity: 1;
-transform: translateX(0px);
-}
-}
-
-.toggle .line1 {
-transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-opacity: 0;
-}
-
-.toggle .line3 {
-transform: rotate(45deg) translate(-5px, -6px);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
