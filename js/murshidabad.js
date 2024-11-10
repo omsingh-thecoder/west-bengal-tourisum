@@ -1,5 +1,18 @@
-
 document.addEventListener('DOMContentLoaded', function() {
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    });
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        body.classList.add('dark-mode');
+    }
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -8,6 +21,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
         });
+    });
+
+    // Mobile menu toggle
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
+
+        burger.classList.toggle('toggle');
     });
 
     // Scroll to top button
@@ -31,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.getElementsByClassName('close')[0];
-    const galleryImages = document.querySelectorAll('.gallery-image');
+    const galleryImages = document.querySelectorAll('.gallery-grid img');
 
     galleryImages.forEach(img => {
         img.addEventListener('click', function() {
@@ -44,10 +76,17 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'none';
     });
 
-    window.addEventListener('click', function(event)
-    {
+    window.addEventListener('click', function(event) {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
+    });
+
+    // Form submission (you can replace this with your own backend logic)
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message. We will get back to you soon!');
+        contactForm.reset();
     });
 });
