@@ -6,9 +6,7 @@
   --text-color: #333;
   --background-color: #f4f4f4;
   --card-background: #fff;
-}
-html {
-  scroll-behavior: smooth;
+  --transition-speed: 0.3s;
 }
 
 .dark-mode {
@@ -25,12 +23,16 @@ html {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 header {
@@ -39,7 +41,7 @@ header {
   position: fixed;
   width: 100%;
   z-index: 1000;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-speed) ease;
 }
 
 nav {
@@ -62,6 +64,7 @@ nav {
 
 .nav-item {
   position: relative;
+  margin-left: 2rem;
 }
 
 .nav-item::before {
@@ -72,15 +75,22 @@ nav {
   width: 0%;
   height: 2px;
   background-color: var(--primary-color);
-  transition: all 0.3s ease-in;
+  transition: width var(--transition-speed) ease-in;
 }
 
 .nav-item:hover::before {
   width: 100%;
 }
 
-.nav-links li {
-  margin-left: 2rem;
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 400;
+  transition: color var(--transition-speed) ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
 }
 
 .contact-btn {
@@ -95,10 +105,7 @@ nav {
   z-index: 1;
   color: var(--text-color);
   text-decoration: none;
-}
-
-.contact-btn a:hover {
-  color: var(--background-color);
+  transition: color var(--transition-speed) ease;
 }
 
 .contact-btn::before {
@@ -110,22 +117,15 @@ nav {
   height: 100%;
   background-color: var(--primary-color);
   z-index: -1;
-  transition: all 0.3s ease-in-out;
+  transition: width var(--transition-speed) ease-in-out;
 }
 
 .contact-btn:hover::before {
   width: 100%;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 400;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--primary-color);
+.contact-btn:hover a {
+  color: var(--background-color);
 }
 
 .burger {
@@ -138,7 +138,7 @@ nav {
   height: 3px;
   background-color: var(--text-color);
   margin: 5px;
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed) ease;
 }
 
 main {
@@ -216,17 +216,12 @@ h3 {
   padding: 10px 20px;
   color: var(--background-color);
   background-color: var(--secondary-color);
-  animation: top-down 1s ease-in-out infinite alternate;
   cursor: pointer;
+  transition: transform var(--transition-speed) ease-in-out;
 }
 
-@keyframes top-down {
-  0% {
-    transform: translateY(-20%);
-  }
-  100% {
-    transform: translateY(20%);
-  }
+.btn button:hover {
+  transform: translateY(-5px);
 }
 
 .spot-grid,
@@ -241,7 +236,7 @@ h3 {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
 
 .spot-card:hover {
@@ -273,7 +268,7 @@ h3 {
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-speed) ease;
 }
 
 .gallery-grid img:hover {
@@ -300,6 +295,13 @@ h3 {
   font-family: inherit;
   background-color: var(--card-background);
   color: var(--text-color);
+  transition: border-color var(--transition-speed) ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 .contact button {
@@ -309,7 +311,7 @@ h3 {
   padding: 0.75rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-speed) ease;
 }
 
 .contact button:hover {
@@ -321,7 +323,7 @@ footer {
   color: var(--text-color);
   text-align: center;
   padding: 1rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .dark-mode-toggle {
@@ -331,7 +333,7 @@ footer {
   padding: 0.5rem;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: color var(--transition-speed) ease;
 }
 
 .dark-mode-toggle:hover {
@@ -350,7 +352,7 @@ footer {
     align-items: center;
     width: 50%;
     transform: translateX(100%);
-    transition: transform 0.5s ease-in, background-color 0.3s ease;
+    transition: transform 0.5s ease-in, background-color var(--transition-speed) ease;
   }
 
   .nav-links li {
@@ -383,4 +385,37 @@ footer {
     opacity: 1;
     transform: translateX(0px);
   }
+}
+
+/* Performance optimizations */
+.spot-card,
+.gallery-grid img {
+  will-change: transform;
+}
+
+.hero h1,
+.hero p {
+  will-change: opacity;
+}
+
+/* Improve accessibility */
+.nav-links a:focus,
+.dark-mode-toggle:focus,
+.contact input:focus,
+.contact textarea:focus,
+.contact button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Optimize images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve text readability */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

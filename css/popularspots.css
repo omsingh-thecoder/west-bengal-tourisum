@@ -6,6 +6,7 @@
   --text-color: #333333;
   --card-background: #ffffff;
   --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
 }
 
 .dark-mode {
@@ -20,7 +21,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;  /* Smooth scrolling */
 }
 
 body {
@@ -28,7 +28,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  transition: background-color var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out;
 }
 
 .container {
@@ -43,7 +43,7 @@ header {
   position: fixed;
   width: 100%;
   z-index: 1000;
-  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 nav {
@@ -57,13 +57,12 @@ nav {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--primary-color);
-  transition: color 0.3s ease;
+  transition: color var(--transition-speed) ease;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nav-links li {
@@ -74,7 +73,7 @@ nav {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 400;
-  transition: color 0.3s ease-in-out;
+  transition: color var(--transition-speed) ease-in-out;
 }
 
 .nav-links a:hover {
@@ -85,17 +84,16 @@ nav {
   cursor: pointer;
   font-size: 1.2rem;
   margin-left: 1rem;
-  transition: transform 0.3s ease-in-out;
+  transition: transform var(--transition-speed) ease-in-out;
 }
 
 .dark-mode-toggle:hover {
-  transform: rotate(20deg); /* Subtle rotation on hover */
+  transform: rotate(20deg);
 }
 
 .burger {
   display: none;
   cursor: pointer;
-  transition: transform 0.4s ease;
 }
 
 .burger div {
@@ -103,7 +101,7 @@ nav {
   height: 3px;
   background-color: var(--text-color);
   margin: 5px;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all var(--transition-speed) ease;
 }
 
 .hero {
@@ -117,7 +115,6 @@ nav {
   text-align: center;
   color: #fff;
   position: relative;
-  transition: background 0.3s ease-in-out;
 }
 
 .hero::before {
@@ -125,7 +122,6 @@ nav {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  transition: opacity 0.3s ease-in-out;
 }
 
 .hero-content {
@@ -136,13 +132,15 @@ nav {
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  animation: fadeIn 1s ease-in-out;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  animation: fadeIn 1.5s ease-in-out;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.5s forwards;
 }
 
 main {
@@ -153,7 +151,6 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
-  transition: all 0.3s ease-in-out;
 }
 
 .spot-card {
@@ -161,7 +158,7 @@ main {
   border-radius: 10px;
   box-shadow: var(--card-shadow);
   overflow: hidden;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .spot-card:hover {
@@ -173,7 +170,7 @@ main {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  transition: filter 0.3s ease-in-out;
+  transition: filter var(--transition-speed) ease-in-out;
 }
 
 .spot-card img:hover {
@@ -188,7 +185,7 @@ main {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
-  transition: color 0.3s ease-in-out;
+  transition: color var(--transition-speed) ease-in-out;
 }
 
 .spot-card h3:hover {
@@ -200,7 +197,7 @@ footer {
   color: var(--text-color);
   padding: 2rem 0;
   text-align: center;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  transition: background-color var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
@@ -215,23 +212,15 @@ footer {
     align-items: center;
     width: 50%;
     transform: translateX(100%);
-    transition: transform 0.5s ease-in-out, background-color 0.3s ease-in-out;
+    transition: transform var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease-in-out;
   }
 
   .burger {
     display: block;
   }
 
-  .burger.toggle div:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .burger.toggle div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .burger.toggle div:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+  .nav-active {
+    transform: translateX(0%);
   }
 
   .hero h1 {
@@ -243,7 +232,7 @@ footer {
   }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -252,4 +241,39 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Optimize for performance */
+.spot-card {
+  will-change: transform;
+}
+
+.hero h1,
+.hero p {
+  will-change: opacity, transform;
+}
+
+/* Improve accessibility */
+.nav-links a:focus,
+.dark-mode-toggle:focus,
+.spot-card a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve text readability */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
